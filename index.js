@@ -27,3 +27,31 @@ var findTotalFrequencyChange = function(changes) {
 };
 var total = findTotalFrequencyChange(changes);
 console.log(total);
+
+var findFirstRepeatedFrequency = function(changes) {
+  // Use an object to keep track of all the frequencies that the algorithm below will find.
+  var foundFrequencies = {};
+  var runningFrequency = 0;
+
+  // Loop forever, be careful with this as it could cause an infinite loop
+  while (true) {
+    for (var i = 0; i < changes.length; i++) {
+      var change = changes[i];
+      // Change the running frequency based on the current change value
+      runningFrequency += change;
+
+      // If the value of the running frequency is found in the object
+      if (foundFrequencies[runningFrequency]) {
+        // Return the running frequency as we've already hit it once.
+        // This will also break out of the while loop.
+        return runningFrequency;
+      }
+
+      // The frequency value was not found in the object
+      // Store it into the object so that we can track if we hit this same frequency again.
+      foundFrequencies[runningFrequency] = true;
+    }
+  }
+};
+var repeatedFrequency = findFirstRepeatedFrequency(changes);
+console.log(repeatedFrequency);
