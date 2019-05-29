@@ -18,10 +18,12 @@ for (var i = 0; i < numberStrings.length; i++) {
   }
 }
 
-var total = 0;
-for (var i = 0; i < changes.length; i++) {
-  var number = changes[i];
-  total = total + number;
-}
-
+var findTotalFrequencyChange = function(changes) {
+  var total = 0;
+  for (var i = 0; i < changes.length; i++) {
+    var number = changes[i];
+    total = total + number;
+  }
+};
+var total = findTotalFrequencyChange(changes);
 console.log(total);
