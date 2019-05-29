@@ -6,7 +6,7 @@ var input = fs.readFileSync("./input.txt").toString();
 
 var numberStrings = input.split("\n");
 
-var total = 0;
+var changes = [];
 
 for (var i = 0; i < numberStrings.length; i++) {
   var string = numberStrings[i];
@@ -14,10 +14,14 @@ for (var i = 0; i < numberStrings.length; i++) {
   var number = parseInt(string, 10);
 
   if (!isNaN(number)) {
-    total = total + number;
-    
-    // total += number;
+    changes.push(number);
   }
+}
+
+var total = 0;
+for (var i = 0; i < changes.length; i++) {
+  var number = changes[i];
+  total = total + number;
 }
 
 console.log(total);
